@@ -1,0 +1,7 @@
+%li
+  %div.user_info
+    = link_to gravatar_for(user, :size => 30), user
+    %span.user_name= link_to user.name, user
+    - if current_user.admin? && current_user != user
+      %span.delete_link= link_to 'delete', user, :method => :delete, 
+        :confirm => 'You sure?', :title => "Delete #{user.name}"

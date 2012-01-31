@@ -1,0 +1,21 @@
+%table.profile{:summary => 'Profile information'}
+  %tr
+    %td{:class => 'main'}
+      %h1
+        = gravatar_for @user
+        = @user.name
+      = render 'shared/follow_form' if signed_in?
+      - unless @user.microposts.empty?
+        %table.microposts{:summary => 'User microposts'}
+          = render @microposts
+        = will_paginate @microposts
+    %td{:class => 'sidebar round'}
+      %strong Name
+      = @user.name
+      %br
+      %strong Link
+      = link_to 'Microposts', user_microposts_path(@user)
+      %br
+      %strong Microposts
+      = @user.microposts.count
+      = render 'shared/stats'

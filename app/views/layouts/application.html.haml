@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title= page_title
+    = render 'layouts/stylesheets'
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    %div.container 
+      = render 'layouts/header'
+      %section.round
+        - flash.each do |key, value|
+          = content_tag :div, value, :class => "flash #{key}"
+        = yield
+      = render 'layouts/footer'

@@ -1,0 +1,16 @@
+%h1= @page_title
+
+%p
+  = form_for @search, :url => users_path, :html => { :method => :get } do |f|
+    = f.label :name_contains
+    %br
+    = f.text_field :name_contains
+    %br
+    = f.submit 'Search user'
+
+= will_paginate
+
+%ul.users
+  = render @users
+
+= will_paginate

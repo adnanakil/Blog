@@ -1,0 +1,17 @@
+%h1= @page_title
+
+= form_for :session, :url => sessions_path do |f|
+  %div.field
+    = f.label :email
+    %br
+    = f.text_field :email
+  %div.field
+    = f.label :password
+    %br
+    = f.password_field :password
+  %div.actions
+    =f.submit 'Sign in'
+
+%p 
+  New user?
+  = link_to 'Sign up now!', signup_path
